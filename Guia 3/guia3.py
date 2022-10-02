@@ -1195,7 +1195,7 @@ print("\nPromedio de altura: ", sumaAltura/ 10)
 
 
 INTEGRADOR 4
-
+'''
 
 num = int(input("Ingrese un número: "))
 num1 = num
@@ -1234,94 +1234,6 @@ a -= b
 
 print("La cadena A queda: ", a)
 
-'''
-def is_user_valid(user):   
 
-        upper, lower, count = 0, 0, 0
-
-        if (len(user) >= 6):
-
-          for i in user:
-
-              if (i.islower()):
-                  lower+=1            
-    
-              if (i.isupper()):
-                  upper+=1            
-    
-              if (i.isnumeric()):
-                  count+=1                
-          
-        if (upper>=1 and lower >=1 and count>=1 and lower+upper+count == len(user)):
-           return True
-        else:
-           return False   
-
-def is_password_valid(password):  
-     upper, lower, count = 0, 0, 0  
-     if (len(password) >= 8):  
-       for i in password:  
-           if (i.islower()):
-               lower+=1            
  
-           if (i.isupper()):
-               upper+=1            
- 
-           if (i.isnumeric()):
-               count+=1                
-       
-     if (upper>=1 and lower >=1 and count>=3 and lower+upper+count==len(password)):
-        return True
-     else:
-        return False
-
-print("\n\nBIENVENIDO AL PORTAL DE NUEVOS USUARIOS!\n")
-
-print("Desea registrarse con un nuevo usuario y contraseña? (S/N) :", end="")
-resp = input()
-resp = str(resp.lower())
-print("Respuesta elegida: ", resp)
-
-while ( resp != chr(115) and resp != chr(110)):
-
-    print("\nNo has ingresado un valor existente, pruebe nuevamente: ", end="")
-    resp = input()
-    resp = str(resp.lower())
-
-while (resp == chr(110)):
-    print("\nFue un placer poder ayudarte!\n")
-    print("\n       FIN DEL PROGRAMA     \n\n")
-    quit()
-
-while ( resp == chr(115)):
-    
-    print("\n** Recuerde que el usuario debe contener al menos 6 caracteres y un número **\n")
-    usuario = input("\nIngrese nombre de usuario: ") 
-
-    if is_user_valid(usuario) == False:
-
-        while ( is_user_valid(usuario) == False ):
-
-            print("\nUsuario inválido, pruebe nuevamente.\n")
-            print("\n** Recuerde que el usuario debe contener al menos 6 caracteres, una mayúscula y un número **\n")
-            usuario = input("\nIngrese nombre de usuario: ")
-
-    if is_user_valid(usuario) == True:
-
-       print("\nUsuario creado con éxito!\n Ahora cree una contraseña  ** Recuerde que debe contener al menos 8 caracteres, y al menos 3 números) ")
-       contraseña = input("Contraseña: ")
-
-    if is_password_valid(contraseña) == False:
-
-        while ( is_password_valid(contraseña) == False ):
-
-            print("\nContraseña inválida, pruebe nuevamente.\n")
-            print("\n** Recuerde que la contraseña debe contener al menos 8 caracteres y 3 números **\n")
-            contraseña = input("\nIngrese contraseña: ")
-
-    if is_password_valid(contraseña) == True:
-        print("\nEl usuario y contraseña se han creado con éxito!\nBienvenido", usuario, " al portal!\n")
-
-
-    quit()    
 
