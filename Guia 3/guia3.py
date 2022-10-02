@@ -1217,9 +1217,9 @@ print("\nNumero: ",num1)
 print("\nPalíndromo: ", pal)
 
 if (num1 == pal):
-    print("\nSon palíndromos wachiinnn\n\n")
+    print("\nSon palíndromos!\n\n")
 else:
-    print("\nNo son nada que ver amigo, suerte\n\n")    
+    print("\nEsto es un palíndromo? No lo creo\n\n")    
 
 a = 'abcde'
 
