@@ -1,13 +1,13 @@
 from functions import*
 from prints import*
-from base_de_datos import*
+
+dataBase = transformar_archivo_DB('database.txt')
 
 ##Print de bienvenida.
 bienvenida()
-usuarios=[]
-contraseñas=[]
 resp = input()
 resp = str(resp.lower())
+
 cont = 0
 
 print("\n---------------------------------------------------------------------------")
@@ -50,8 +50,8 @@ while ( resp == chr(115)):
         
         exito_usuario(usuario, contraseña)
     
-    datos_usuario.append(usuario)
-    datos_contraseña.append(contraseña)
+    lista_usr = [usuario, contraseña]
+    dataBase.append(lista_usr)
     
     resp = 'q'
 
@@ -59,27 +59,26 @@ print("\n        BIENVENID@ A DUCOS AUTOMATION COMPANY      \n")
 print("\n\n-----------------------------------------------------\n\n")
 print("-Ingrese a la plataforma con su usuario y contraseña-\n\n")
 
-
 while (cont < 2):
 
     login_user = input("Usuario: ")
 
-    for i in range(len(datos_usuario)):
+    for i in range(len(dataBase[0])-1):
     
-        while ( login_user != datos_usuario[i]):
+        while ( login_user != str(dataBase[i][0])):
             login_user = input("Usuario inexistente en la base de datos, inténtelo nuevamente: ")
     
-        if ( login_user == datos_usuario[i]):
+        if ( login_user == str(dataBase[i][0])):
             cont +=1
     
     login_password = input("Contraseña: ")
     
-    for i in range(len(datos_contraseña)):
+    for i in range(len(dataBase[0])-1):
         
-        while ( login_password != datos_contraseña[i]):
+        while ( login_password != dataBase[i][1]):
             login_password = input("Contraseña inexistente en la base de datos, inténtelo nuevamente: ")
     
-        if ( login_password == datos_contraseña[i]):
+        if ( login_password == dataBase[i][1]):
             cont += 1
 
 if ( cont == 2):
@@ -87,6 +86,20 @@ if ( cont == 2):
     print("\nSuccesfull login.\nPlease wait to be redirected to the main page.\n")
     cont = 0
 
-    
+DB_str = transform_to_str(dataBase)
+
+
+try:  
+    fd = open('database.txt', 'w')
+    for fila in DB_str:
+        fd.write(fila + '\n') 
+    fd.close()    
+
+except FileNotFoundError:  
+
+    fd = open('database.txt', 'w')
+    for fila in DB_str:
+        fd.write(fila + '\n')       
+    fd.close()    
 
 fin_programa()   
